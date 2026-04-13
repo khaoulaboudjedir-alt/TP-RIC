@@ -1,9 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# ============================================================
-# ETAPE 1 : Generation du Dataset
-# ============================================================
+
 np.random.seed(42)
 N = 2000
 
@@ -37,9 +35,7 @@ ax.set_zlabel("z")
 plt.tight_layout()
 plt.show()
 
-# ============================================================
-# ETAPE 2 : Architecture du Reseau
-# ============================================================
+
 class MLP:
 
     def __init__(self, layers=[2, 64, 64, 1]):
@@ -63,7 +59,7 @@ class MLP:
         self.activations = [X]
         self.z_values = []
         A = X
-        # Couches cachees - ReLU
+        
         for i in range(len(self.weights) - 1):
             Z = A @ self.weights[i] + self.biases[i]
             self.z_values.append(Z)
@@ -79,10 +75,10 @@ class MLP:
         return np.mean((y_pred - y_true) ** 2)
 
 
-# Creation du reseau
+
 mlp = MLP([2, 64, 64, 1])
 
-# Affichage
+
 print("=" * 45)
 print("      ARCHITECTURE DU RESEAU MLP")
 print("=" * 45)
